@@ -40,7 +40,7 @@ const hasPix = !!config.pix.key
         class="btn btn-link btn-support d-md-none ms-auto"
         @click="$emit('support')"
       >
-        <i class="bi bi-heart"></i> Apoie
+        <i class="bi bi-heart-fill heart-beat"></i> Apoie
       </button>
     </div>
   </header>

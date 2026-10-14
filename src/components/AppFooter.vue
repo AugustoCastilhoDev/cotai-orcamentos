@@ -31,7 +31,7 @@ const publisherUrl = config.publisher.url
       <template v-if="config.pix.key">
         <span aria-hidden="true">·</span>
         <button type="button" class="btn btn-link btn-support p-0" @click="$emit('support')">
-          <i class="bi bi-heart"></i> Apoie este projeto
+          <i class="bi bi-heart-fill heart-beat"></i> Apoie este projeto
         </button>
       </template>
     </p>

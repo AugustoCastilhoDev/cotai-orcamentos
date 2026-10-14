@@ -258,12 +258,41 @@ body {
 }
 
 .btn-support {
-  color: $secondary;
-  font-size: 0.82rem;
+  color: $danger;
+  font-size: 0.85rem;
+  font-weight: 600;
   text-decoration: none;
 
-  &:hover {
-    color: $danger;
+  &:hover,
+  &:focus-visible {
+    color: shade-color($danger, 20%);
+    text-decoration: underline;
+  }
+}
+
+// Coração "batendo" de leve (desativado para quem prefere menos movimento)
+.heart-beat {
+  display: inline-block;
+  animation: heart-beat 1.8s ease-in-out infinite;
+}
+
+@keyframes heart-beat {
+  0%,
+  40%,
+  100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.25);
+  }
+  28% {
+    transform: scale(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heart-beat {
+    animation: none;
   }
 }
 
