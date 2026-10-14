@@ -1,0 +1,317 @@
+// ---------- Tema Bootstrap ----------
+$primary: #0f52ba;
+$secondary: #6b7385;
+$success: #198754;
+$danger: #d63c3c;
+$info: #0b7a9c;
+$body-bg: #f4f6fb;
+$body-color: #1e232d;
+$font-family-sans-serif: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$border-radius: 0.6rem;
+$border-radius-sm: 0.45rem;
+$border-radius-lg: 0.9rem;
+$card-border-width: 0;
+$card-box-shadow: 0 1px 2px rgba(20, 30, 60, 0.06), 0 2px 8px rgba(20, 30, 60, 0.05);
+$input-btn-focus-width: 0.2rem;
+$enable-shadows: false;
+$min-contrast-ratio: 3;
+
+@import 'bootstrap/scss/bootstrap';
+
+// ---------- Layout ----------
+$bottom-nav-h: 62px;
+
+html,
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+.app-main {
+  padding-top: 1rem;
+  padding-bottom: calc(#{$bottom-nav-h} + 1.5rem + env(safe-area-inset-bottom));
+
+  @include media-breakpoint-up(md) {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.app-container {
+  max-width: 980px;
+}
+
+.card {
+  box-shadow: $card-box-shadow;
+}
+
+.page-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $secondary;
+  margin-bottom: 0.75rem;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+// Evita zoom automático do iOS ao focar campos
+@include media-breakpoint-down(md) {
+  .form-control,
+  .form-select {
+    font-size: 16px;
+  }
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+// ---------- Navegação ----------
+.top-nav {
+  background: #fff;
+  border-bottom: 1px solid $gray-200;
+  padding-top: env(safe-area-inset-top);
+
+  .brand {
+    font-weight: 800;
+    color: $primary;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+    }
+
+    .brand-slogan {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: $secondary;
+      margin-top: 2px;
+    }
+  }
+
+  .nav-link {
+    color: $secondary;
+    font-weight: 500;
+    border-radius: $border-radius-sm;
+    padding: 0.4rem 0.75rem;
+
+    &.router-link-active {
+      color: $primary;
+      background: rgba($primary, 0.08);
+    }
+  }
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1030;
+  background: #fff;
+  border-top: 1px solid $gray-200;
+  padding-bottom: env(safe-area-inset-bottom);
+  display: flex;
+
+  a {
+    flex: 1;
+    height: $bottom-nav-h;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-size: 0.7rem;
+    color: $secondary;
+    text-decoration: none;
+
+    .bi {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    &.router-link-active {
+      color: $primary;
+      font-weight: 600;
+    }
+  }
+}
+
+// ---------- Listas ----------
+.list-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(20, 30, 60, 0.1);
+  }
+
+  &:active {
+    transform: scale(0.995);
+  }
+}
+
+.status-filter {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .btn {
+    white-space: nowrap;
+    border-radius: 999px;
+  }
+}
+
+// ---------- Editor de orçamento ----------
+.item-row {
+  border: 1px solid $gray-200;
+  border-radius: $border-radius;
+  padding: 0.75rem;
+  background: #fff;
+
+  & + & {
+    margin-top: 0.6rem;
+  }
+}
+
+.sticky-actions {
+  position: sticky;
+  bottom: calc(#{$bottom-nav-h} + env(safe-area-inset-bottom));
+  z-index: 1020;
+  background: rgba($body-bg, 0.94);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid $gray-200;
+  margin: 0 -0.75rem;
+  padding: 0.6rem 0.75rem;
+
+  @include media-breakpoint-up(md) {
+    bottom: 0;
+  }
+}
+
+.totals-table td {
+  padding: 0.25rem 0;
+}
+
+.grand-total {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: $primary;
+}
+
+// ---------- Diversos ----------
+.logo-preview {
+  max-width: 160px;
+  max-height: 90px;
+  object-fit: contain;
+  background: repeating-conic-gradient(#eef0f4 0% 25%, #fff 0% 50%) 50% / 16px 16px;
+  border-radius: $border-radius-sm;
+  padding: 4px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: $secondary;
+
+  .bi {
+    font-size: 2.6rem;
+    color: $gray-400;
+  }
+}
+
+.app-footer {
+  font-size: 0.82rem;
+  color: $secondary;
+
+  a {
+    color: $secondary;
+  }
+}
+
+.btn-support {
+  color: $secondary;
+  font-size: 0.82rem;
+  text-decoration: none;
+
+  &:hover {
+    color: $danger;
+  }
+}
+
+.toast-stack {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(#{$bottom-nav-h} + 1rem + env(safe-area-inset-bottom));
+  z-index: 1090;
+  width: min(420px, calc(100vw - 2rem));
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @include media-breakpoint-up(md) {
+    bottom: 1.5rem;
+  }
+}
+
+.pix-qr {
+  width: 220px;
+  height: 220px;
+  image-rendering: pixelated;
+}
+
+.pix-code {
+  font-family: $font-family-monospace;
+  font-size: 0.75rem;
+  word-break: break-all;
+}
+
+.picker-list {
+  max-height: 55vh;
+  overflow-y: auto;
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-backdrop.show {
+  opacity: 0.45;
+}
+
+.min-w-0 {
+  min-width: 0;
+}
+
+.border-dashed {
+  border-style: dashed !important;
+}
