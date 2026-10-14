@@ -344,3 +344,46 @@ body {
 .border-dashed {
   border-style: dashed !important;
 }
+
+// ---------- Instalação do app ----------
+.install-banner {
+  border: 1px solid rgba($primary, 0.25);
+  background: linear-gradient(135deg, rgba($primary, 0.06), #fff 60%);
+}
+
+.install-steps {
+  padding-left: 1.2rem;
+
+  li {
+    margin-bottom: 0.6rem;
+  }
+}
+
+.btn-install-nav {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+// Topo no celular: botões sem quebra de linha; slogan some em telas estreitas
+.top-nav {
+  .btn-support,
+  .btn-install-nav {
+    white-space: nowrap;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand-slogan {
+    white-space: nowrap;
+  }
+
+  @media (max-width: 419.98px) {
+    .brand-slogan {
+      display: none;
+    }
+  }
+}

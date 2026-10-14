@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import config from '@/config'
 import StatusBadge from '@/components/StatusBadge.vue'
 import EmptyState from '@/components/EmptyState.vue'
+import InstallBanner from '@/components/InstallBanner.vue'
 import { useQuotesStore, STATUSES } from '@/stores/quotes'
 import { useCompanyStore } from '@/stores/company'
 import { useUiStore } from '@/stores/ui'
@@ -127,6 +128,8 @@ function clearFilters() {
         <i class="bi bi-plus-lg"></i> Novo
       </RouterLink>
     </div>
+
+    <InstallBanner />
 
     <div v-if="!company.isConfigured" class="alert alert-info d-flex gap-2 align-items-start">
       <i class="bi bi-lightbulb fs-5"></i>

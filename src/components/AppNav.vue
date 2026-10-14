@@ -1,5 +1,7 @@
 <script setup>
 import config from '@/config'
+import InstallButton from './InstallButton.vue'
+import { useInstall } from '@/composables/useInstall'
 
 defineEmits(['support'])
 
@@ -11,6 +13,7 @@ const links = [
   { to: '/backup', label: 'Backup', icon: 'bi-cloud-arrow-down' }
 ]
 const hasPix = !!config.pix.key
+const { mode, canOffer } = useInstall()
 </script>
 
 <template>
@@ -34,14 +37,16 @@ const hasPix = !!config.pix.key
           {{ l.label }}
         </RouterLink>
       </nav>
-      <button
-        v-if="hasPix"
-        type="button"
-        class="btn btn-link btn-support d-md-none ms-auto"
-        @click="$emit('support')"
-      >
-        <i class="bi bi-heart-fill heart-beat"></i> Apoie
-      </button>
+      <div class="d-flex align-items-center gap-1 ms-auto ms-md-0">
+        <InstallButton
+          v-if="canOffer"
+          :btn-class="`btn btn-outline-primary btn-install-nav${mode !== 'prompt' ? ' d-md-none' : ''}`"
+          label="Instalar"
+        />
+        <button v-if="hasPix" type="button" class="btn btn-link btn-support d-md-none px-2" @click="$emit('support')">
+          <i class="bi bi-heart-fill heart-beat"></i> Apoie
+        </button>
+      </div>
     </div>
   </header>
 

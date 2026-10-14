@@ -6,6 +6,8 @@ import './styles/main.scss'
 import App from './App.vue'
 import router from './router'
 import { requestPersistentStorage } from './db'
+// Registra cedo o listener de instalação do PWA (o navegador pode disparar antes do app montar)
+import './composables/useInstall'
 import { useCompanyStore } from './stores/company'
 import { useClientsStore } from './stores/clients'
 import { useCatalogStore } from './stores/catalog'
