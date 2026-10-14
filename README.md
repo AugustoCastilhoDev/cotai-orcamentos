@@ -110,8 +110,12 @@ Outros ajustes:
 
 ## Deploy no Cloudflare Pages
 
-O app é um site estático. O arquivo [`public/_redirects`](public/_redirects) (`/* /index.html 200`) faz as rotas
-da SPA funcionarem ao recarregar a página ou abrir um link direto.
+O app é um site estático. As rotas da SPA (`/clientes`, `/orcamentos/1`...) funcionam ao recarregar a página ou
+abrir um link direto sem nenhum arquivo extra: no Pages, um projeto sem `404.html` já é servido em modo SPA, e no
+Worker isso é definido no [`wrangler.jsonc`](wrangler.jsonc).
+
+> **Não crie um `public/_redirects` com `/* /index.html 200`.** A Cloudflare considera essa regra um loop infinito e
+> o deploy como Worker falha com o erro `Invalid _redirects configuration ... [code: 100324]`.
 
 1. Envie o projeto para um repositório no GitHub.
 2. No painel da Cloudflare, abra **Workers & Pages → Create → Pages → Connect to Git**.
@@ -129,8 +133,7 @@ da SPA funcionarem ao recarregar a página ou abrir um link direto.
 A Cloudflare às vezes cria o projeto em **Workers** (com o deploy command `npx wrangler deploy`) em vez de **Pages**.
 Isso também funciona: o arquivo [`wrangler.jsonc`](wrangler.jsonc) publica a pasta `dist` como site estático, com
 `not_found_handling: "single-page-application"` para as rotas da SPA. Use **Build command** `npm run build` e
-**Deploy command** `npx wrangler deploy`. Nesse modo, o Wrangler avisa que ignora a regra do `_redirects`; o aviso é
-esperado e não causa problema.
+**Deploy command** `npx wrangler deploy`. O app fica em `https://cotai-orcamentos.<sua-conta>.workers.dev`.
 
 A partir daí, cada `git push` na branch principal publica uma nova versão automaticamente. O service worker
 atualiza o app instalado nos aparelhos na próxima vez que ele for aberto com internet.
