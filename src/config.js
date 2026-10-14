@@ -17,7 +17,9 @@ export default {
     url: '',
     // WhatsApp de contato (DDI + DDD + número, só dígitos)
     whatsapp: '5532999669302',
-    whatsappMessage: 'Olá! Vim pelo Cotaí e gostaria de falar sobre um sistema sob medida.'
+    whatsappMessage: 'Olá! Vim pelo Cotaí e gostaria de falar sobre um sistema sob medida.',
+    // Instagram (usuário sem @). Deixe '' para não exibir.
+    instagram: 'augustocastilho_dev'
   },
 
   // Apoio ao projeto via Pix (QR Code estático, gerado no próprio aparelho)

@@ -13,6 +13,16 @@ const publisherUrl = config.publisher.url
       <a v-if="publisherUrl" :href="publisherUrl" target="_blank" rel="noopener" class="fw-semibold">{{ config.publisher.name }}</a>
       <RouterLink v-else to="/sobre" class="fw-semibold">{{ config.publisher.name }}</RouterLink>
     </p>
+    <p v-if="config.publisher.instagram" class="mb-2">
+      <a
+        :href="`https://www.instagram.com/${config.publisher.instagram}/`"
+        target="_blank"
+        rel="noopener"
+        :aria-label="`Instagram @${config.publisher.instagram}`"
+      >
+        <i class="bi bi-instagram"></i> @{{ config.publisher.instagram }}
+      </a>
+    </p>
     <p class="mb-2 d-flex flex-wrap justify-content-center align-items-center gap-2">
       <span><i class="bi bi-shield-lock"></i> Seus dados ficam só neste aparelho.</span>
       <RouterLink to="/privacidade">Privacidade</RouterLink>

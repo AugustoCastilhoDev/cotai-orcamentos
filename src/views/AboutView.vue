@@ -51,6 +51,15 @@ const waLink = `https://wa.me/${p.whatsapp}?text=${encodeURIComponent(p.whatsapp
           <i class="bi bi-whatsapp"></i> Fale com a gente no WhatsApp
         </a>
         <p class="text-secondary small mt-2 mb-0 tabular">{{ phoneDisplay }}</p>
+        <a
+          v-if="p.instagram"
+          :href="`https://www.instagram.com/${p.instagram}/`"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-outline-secondary mt-3"
+        >
+          <i class="bi bi-instagram"></i> @{{ p.instagram }}
+        </a>
       </div>
     </div>
 
