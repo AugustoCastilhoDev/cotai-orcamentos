@@ -124,6 +124,14 @@ da SPA funcionarem ao recarregar a página ou abrir um link direto.
 5. Clique em **Save and Deploy**. Em cerca de 1 minuto o app estará em `https://<projeto>.pages.dev`.
 6. (Opcional) Em **Custom domains**, adicione um domínio próprio.
 
+### Se o projeto foi criado como Worker
+
+A Cloudflare às vezes cria o projeto em **Workers** (com o deploy command `npx wrangler deploy`) em vez de **Pages**.
+Isso também funciona: o arquivo [`wrangler.jsonc`](wrangler.jsonc) publica a pasta `dist` como site estático, com
+`not_found_handling: "single-page-application"` para as rotas da SPA. Use **Build command** `npm run build` e
+**Deploy command** `npx wrangler deploy`. Nesse modo, o Wrangler avisa que ignora a regra do `_redirects`; o aviso é
+esperado e não causa problema.
+
 A partir daí, cada `git push` na branch principal publica uma nova versão automaticamente. O service worker
 atualiza o app instalado nos aparelhos na próxima vez que ele for aberto com internet.
 

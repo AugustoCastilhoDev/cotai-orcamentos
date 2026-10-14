@@ -1,0 +1,12 @@
+{
+  // Deploy como Worker com arquivos estáticos (sem código de servidor).
+  // Usado quando o projeto é criado em "Workers" na Cloudflare (comando: npx wrangler deploy).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cotai-orcamentos",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // Rotas da SPA (/clientes, /orcamentos/1...) devolvem o index.html
+    "not_found_handling": "single-page-application"
+  }
+}
