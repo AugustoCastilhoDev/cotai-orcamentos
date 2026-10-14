@@ -122,5 +122,7 @@ src/
 Desenvolvido por **Augusto Castilho**, da **Castilho Tech Soluções Digitais**, empresa de Leopoldina/MG especializada em
 software sob medida, automações e consultoria em tecnologia para pequenos e médios negócios.
 
-Precisa de um sistema sob medida para o seu negócio?
-**[Fale comigo no WhatsApp](https://wa.me/5532999669302)**
+- Instagram: [@augustocastilho_dev](https://www.instagram.com/augustocastilho_dev/)
+- WhatsApp: [(32) 99966-9302](https://wa.me/5532999669302)
+
+Precisa de um sistema sob medida para o seu negócio? **[Fale comigo no WhatsApp](https://wa.me/5532999669302)**

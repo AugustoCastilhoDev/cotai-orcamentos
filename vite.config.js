@@ -31,6 +31,8 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,svg,ico,woff,woff2}'],
+        // Imagem de compartilhamento (redes sociais) não precisa ficar no cache offline
+        globIgnores: ['**/og-image.png'],
         navigateFallback: '/index.html',
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024
       }
