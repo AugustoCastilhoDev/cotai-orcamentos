@@ -67,8 +67,8 @@ async function remove(c) {
               <div v-if="quoteCount(c.id)" class="small text-primary">{{ quoteCount(c.id) }} orçamento(s)</div>
             </div>
             <div class="d-flex gap-1">
-              <button type="button" class="btn btn-sm btn-outline-secondary" title="Editar" @click="openEdit(c)"><i class="bi bi-pencil"></i></button>
-              <button type="button" class="btn btn-sm btn-outline-danger" title="Excluir" @click="remove(c)"><i class="bi bi-trash"></i></button>
+              <button type="button" class="btn btn-icon btn-soft" title="Editar" @click="openEdit(c)"><i class="bi bi-pencil"></i></button>
+              <button type="button" class="btn btn-icon btn-soft text-danger" title="Excluir" @click="remove(c)"><i class="bi bi-trash"></i></button>
             </div>
           </li>
           <li v-if="!results.length" class="list-group-item text-center text-secondary py-4">Nenhum cliente encontrado.</li>

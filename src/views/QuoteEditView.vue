@@ -195,7 +195,8 @@ async function onDelete() {
       <RouterLink to="/" class="btn btn-light btn-sm" aria-label="Voltar"><i class="bi bi-arrow-left"></i></RouterLink>
       <div class="flex-grow-1">
         <h1 class="page-title">
-          {{ isNew ? 'Novo orçamento' : `Orçamento ${quote.number}` }}
+          <template v-if="isNew">Novo orçamento</template>
+          <template v-else>Orçamento <span class="text-nowrap">{{ quote.number }}</span></template>
         </h1>
         <div v-if="isNew" class="small text-secondary">Número previsto: {{ nextNumber }}</div>
       </div>
@@ -299,10 +300,10 @@ async function onDelete() {
           </p>
           <hr v-if="!isNew" />
           <div v-if="!isNew" class="d-flex gap-2">
-            <button type="button" class="btn btn-outline-secondary btn-sm" :disabled="!!busy" @click="onDuplicate">
+            <button type="button" class="btn btn-link text-secondary px-0" :disabled="!!busy" @click="onDuplicate">
               <i class="bi bi-copy"></i> Duplicar
             </button>
-            <button type="button" class="btn btn-outline-danger btn-sm ms-auto" @click="onDelete">
+            <button type="button" class="btn btn-link text-danger px-0 ms-auto" @click="onDelete">
               <i class="bi bi-trash"></i> Excluir
             </button>
           </div>
@@ -312,7 +313,7 @@ async function onDelete() {
       <div class="sticky-actions d-flex align-items-center gap-3">
         <div class="flex-grow-1">
           <div class="small text-secondary lh-1">Total</div>
-          <div class="fw-bold fs-5 tabular">{{ formatMoney(totals.total) }}</div>
+          <div class="money sticky-total"><span class="marker">{{ formatMoney(totals.total) }}</span></div>
         </div>
         <span v-if="dirty" class="small text-warning-emphasis d-none d-sm-inline">Alterações não salvas</span>
         <button type="submit" class="btn btn-primary px-4" :disabled="saving">

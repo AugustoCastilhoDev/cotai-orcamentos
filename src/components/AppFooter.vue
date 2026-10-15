@@ -28,12 +28,11 @@ const publisherUrl = config.publisher.url
       <RouterLink to="/privacidade">Privacidade</RouterLink>
       <span aria-hidden="true">·</span>
       <RouterLink to="/sobre">Sobre</RouterLink>
-      <template v-if="config.pix.key">
-        <span aria-hidden="true">·</span>
-        <button type="button" class="btn btn-link btn-support p-0" @click="$emit('support')">
-          <i class="bi bi-heart-fill heart-beat"></i> Apoie este projeto
-        </button>
-      </template>
+    </p>
+    <p v-if="config.pix.key" class="mb-2">
+      <button type="button" class="btn btn-link btn-support p-0" @click="$emit('support')">
+        <i class="bi bi-heart-fill heart-beat"></i> Apoie este projeto
+      </button>
     </p>
     <p class="mb-0 small">© {{ year }} {{ config.publisher.legalName }}</p>
   </footer>

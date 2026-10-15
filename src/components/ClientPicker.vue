@@ -61,10 +61,10 @@ function onBlur() {
         <div v-if="client.address" class="text-secondary">{{ client.address }}</div>
       </div>
       <div class="d-flex flex-column gap-1">
-        <button v-if="clientId" type="button" class="btn btn-sm btn-outline-secondary" title="Editar cadastro" @click="openEdit">
+        <button v-if="clientId" type="button" class="btn btn-icon btn-soft" title="Editar cadastro" @click="openEdit">
           <i class="bi bi-pencil"></i>
         </button>
-        <button type="button" class="btn btn-sm btn-outline-secondary" title="Trocar cliente" @click="clear">
+        <button type="button" class="btn btn-icon btn-soft" title="Trocar cliente" @click="clear">
           <i class="bi bi-arrow-left-right"></i>
         </button>
       </div>

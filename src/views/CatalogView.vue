@@ -68,8 +68,8 @@ async function remove(it) {
               <div class="small text-secondary tabular">{{ formatMoney(it.price) }} / {{ it.unit }}</div>
             </div>
             <div class="d-flex gap-1">
-              <button type="button" class="btn btn-sm btn-outline-secondary" title="Editar" @click="openEdit(it)"><i class="bi bi-pencil"></i></button>
-              <button type="button" class="btn btn-sm btn-outline-danger" title="Excluir" @click="remove(it)"><i class="bi bi-trash"></i></button>
+              <button type="button" class="btn btn-icon btn-soft" title="Editar" @click="openEdit(it)"><i class="bi bi-pencil"></i></button>
+              <button type="button" class="btn btn-icon btn-soft text-danger" title="Excluir" @click="remove(it)"><i class="bi bi-trash"></i></button>
             </div>
           </li>
           <li v-if="!results.length" class="list-group-item text-center text-secondary py-4">Nenhum item encontrado.</li>

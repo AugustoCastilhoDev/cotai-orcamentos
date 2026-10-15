@@ -131,11 +131,11 @@ function clearFilters() {
 
     <InstallBanner />
 
-    <div v-if="!company.isConfigured" class="alert alert-info d-flex gap-2 align-items-start">
+    <div v-if="!company.isConfigured" class="callout d-flex gap-2 align-items-start mb-3">
       <i class="bi bi-lightbulb fs-5"></i>
       <div>
         <strong>Primeiro passo:</strong> preencha os dados da sua empresa (nome, logo, contato) para que eles saiam no PDF.
-        <RouterLink to="/empresa" class="alert-link d-block mt-1">Configurar minha empresa →</RouterLink>
+        <RouterLink to="/empresa" class="d-block mt-1">Configurar minha empresa →</RouterLink>
       </div>
     </div>
 
@@ -149,7 +149,7 @@ function clearFilters() {
           <div class="row g-2 align-items-center">
             <div class="col-12 col-md">
               <div class="status-filter">
-                <button type="button" class="btn btn-sm" :class="status === '' ? 'btn-primary' : 'btn-outline-secondary'" @click="status = ''">
+                <button type="button" class="btn btn-sm" :class="{ active: status === '' }" :aria-pressed="status === ''" @click="status = ''">
                   Todos <span class="opacity-75">{{ quotes.items.length }}</span>
                 </button>
                 <button
@@ -157,7 +157,7 @@ function clearFilters() {
                   :key="key"
                   type="button"
                   class="btn btn-sm"
-                  :class="status === key ? `btn-${s.color}` : 'btn-outline-secondary'"
+                  :class="{ active: status === key }" :aria-pressed="status === key"
                   @click="status = key"
                 >
                   {{ s.label }} <span class="opacity-75">{{ counts[key] || 0 }}</span>
@@ -189,7 +189,7 @@ function clearFilters() {
       </div>
 
       <div v-if="filtered.length" class="d-flex flex-column gap-2">
-        <div v-for="q in filtered" :key="q.id" class="card list-card">
+        <div v-for="q in filtered" :key="q.id" class="card list-card" :class="`status-${q.status}`">
           <div class="card-body p-3">
             <RouterLink :to="`/orcamentos/${q.id}`" class="stretched-link text-decoration-none text-body">
               <div class="d-flex justify-content-between align-items-start gap-2">
@@ -201,12 +201,12 @@ function clearFilters() {
               </div>
             </RouterLink>
             <div class="d-flex justify-content-between align-items-center mt-2">
-              <span class="fw-bold fs-5 tabular">{{ formatMoney(q.total) }}</span>
+              <span class="money fs-5">{{ formatMoney(q.total) }}</span>
               <div class="d-flex gap-1 position-relative" style="z-index: 2">
-                <button type="button" class="btn btn-sm btn-outline-secondary" title="Baixar PDF" @click="downloadPdf(q)">
+                <button type="button" class="btn btn-icon btn-soft" title="Baixar PDF" @click="downloadPdf(q)">
                   <i class="bi bi-file-earmark-pdf"></i>
                 </button>
-                <button type="button" class="btn btn-sm btn-outline-secondary" title="Duplicar" @click="duplicate(q)">
+                <button type="button" class="btn btn-icon btn-soft" title="Duplicar" @click="duplicate(q)">
                   <i class="bi bi-copy"></i>
                 </button>
               </div>

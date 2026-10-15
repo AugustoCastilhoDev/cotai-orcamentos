@@ -68,10 +68,10 @@ function move(index, dir) {
             :aria-label="`Descrição do item ${i + 1}`"
           ></textarea>
           <div class="d-flex flex-column">
-            <button type="button" class="btn btn-sm btn-link text-secondary p-0 px-1" :disabled="i === 0" title="Mover para cima" @click="move(i, -1)">
+            <button type="button" class="btn btn-link text-secondary btn-reorder" :disabled="i === 0" title="Mover para cima" @click="move(i, -1)">
               <i class="bi bi-chevron-up"></i>
             </button>
-            <button type="button" class="btn btn-sm btn-link text-secondary p-0 px-1" :disabled="i === items.length - 1" title="Mover para baixo" @click="move(i, 1)">
+            <button type="button" class="btn btn-link text-secondary btn-reorder" :disabled="i === items.length - 1" title="Mover para baixo" @click="move(i, 1)">
               <i class="bi bi-chevron-down"></i>
             </button>
           </div>
@@ -94,7 +94,7 @@ function move(index, dir) {
             <div class="fw-bold tabular">{{ formatMoney(itemSubtotal(it)) }}</div>
           </div>
           <div class="col-3 col-md-1 text-end">
-            <button type="button" class="btn btn-outline-danger btn-sm" title="Remover item" @click="remove(i)">
+            <button type="button" class="btn btn-icon btn-soft text-danger" title="Remover item" @click="remove(i)">
               <i class="bi bi-trash"></i>
             </button>
           </div>

@@ -66,7 +66,7 @@ function setDiscountType(type) {
           </tr>
           <tr class="border-top">
             <td class="fw-bold pt-2">Total</td>
-            <td class="text-end grand-total pt-2">{{ formatMoney(totals.total) }}</td>
+            <td class="text-end pt-2"><span class="money grand-total marker">{{ formatMoney(totals.total) }}</span></td>
           </tr>
         </tbody>
       </table>

@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import '@fontsource-variable/bricolage-grotesque'
 import './styles/main.scss'
 
 import App from './App.vue'

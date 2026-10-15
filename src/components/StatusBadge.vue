@@ -5,7 +5,7 @@ defineProps({ status: { type: String, required: true } })
 </script>
 
 <template>
-  <span class="badge rounded-pill" :class="`text-bg-${STATUSES[status]?.color || 'secondary'}`">
+  <span class="status-badge" :class="`status-${status}`">
     <i class="bi" :class="STATUSES[status]?.icon"></i> {{ STATUSES[status]?.label || status }}
   </span>
 </template>
