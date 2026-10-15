@@ -78,7 +78,7 @@ async function save() {
     <form novalidate @submit.prevent="save">
       <div class="card mb-3">
         <div class="card-body">
-          <div class="section-title">Identificação</div>
+          <h2 class="section-title"><i class="bi bi-person-vcard" aria-hidden="true"></i>Identificação</h2>
           <div class="row g-3">
             <div class="col-12">
               <label class="form-label" for="c-name">Nome da empresa ou profissional *</label>
@@ -110,7 +110,7 @@ async function save() {
 
       <div class="card mb-3">
         <div class="card-body">
-          <div class="section-title">Aparência do PDF</div>
+          <h2 class="section-title"><i class="bi bi-palette" aria-hidden="true"></i>Aparência do PDF</h2>
           <div class="row g-4">
             <div class="col-md-6">
               <label class="form-label d-block">Logo</label>
@@ -156,7 +156,7 @@ async function save() {
 
       <div class="card mb-3">
         <div class="card-body">
-          <div class="section-title">Padrões dos novos orçamentos</div>
+          <h2 class="section-title"><i class="bi bi-sliders" aria-hidden="true"></i>Padrões dos novos orçamentos</h2>
           <div class="row g-3">
             <div class="col-12">
               <label class="form-label" for="c-terms">Condições de pagamento</label>

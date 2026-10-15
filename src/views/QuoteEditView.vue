@@ -207,7 +207,7 @@ async function onDelete() {
       <!-- Dados gerais -->
       <div class="card mb-3">
         <div class="card-body">
-          <div class="section-title">Dados do orçamento</div>
+          <h2 class="section-title"><i class="bi bi-calendar3" aria-hidden="true"></i>Dados do orçamento</h2>
           <div class="row g-3">
             <div class="col-6 col-md-3">
               <label class="form-label" for="q-date">Data</label>
@@ -218,15 +218,20 @@ async function onDelete() {
               <input id="q-validity" v-model.number="quote.validityDays" type="number" min="1" max="365" inputmode="numeric" class="form-control" />
               <div class="form-text">até {{ formatDate(validUntil) }}</div>
             </div>
-            <div class="col-6 col-md-3">
-              <label class="form-label" for="q-status">Status</label>
-              <select id="q-status" v-model="quote.status" class="form-select">
-                <option v-for="(s, key) in STATUSES" :key="key" :value="key">{{ s.label }}</option>
-              </select>
-            </div>
-            <div class="col-6 col-md-3">
+            <div class="col-12 col-md-6">
               <label class="form-label" for="q-delivery">Prazo de entrega</label>
               <input id="q-delivery" v-model="quote.deliveryTime" class="form-control" maxlength="80" placeholder="Ex.: 5 dias úteis" />
+            </div>
+            <div class="col-12">
+              <div id="q-status-label" class="form-label">Status</div>
+              <div class="status-picker" role="radiogroup" aria-labelledby="q-status-label">
+                <template v-for="(s, key) in STATUSES" :key="key">
+                  <input :id="`q-status-${key}`" v-model="quote.status" class="btn-check" type="radio" name="q-status" :value="key" />
+                  <label class="status-option" :class="`status-${key}`" :for="`q-status-${key}`">
+                    <i class="bi" :class="s.icon" aria-hidden="true"></i> {{ s.label }}
+                  </label>
+                </template>
+              </div>
             </div>
           </div>
         </div>
@@ -235,7 +240,7 @@ async function onDelete() {
       <!-- Cliente -->
       <div id="sec-cliente" class="card mb-3">
         <div class="card-body">
-          <div class="section-title">Cliente</div>
+          <h2 class="section-title"><i class="bi bi-person" aria-hidden="true"></i>Cliente</h2>
           <ClientPicker v-model="quote.client" v-model:client-id="quote.clientId" :invalid="clientInvalid" @update:model-value="clientInvalid = false" />
         </div>
       </div>
@@ -243,7 +248,7 @@ async function onDelete() {
       <!-- Itens -->
       <div class="card mb-3">
         <div class="card-body">
-          <div class="section-title">Itens</div>
+          <h2 class="section-title"><i class="bi bi-list-check" aria-hidden="true"></i>Itens</h2>
           <QuoteItemsEditor v-model="quote.items" />
         </div>
       </div>
@@ -251,7 +256,7 @@ async function onDelete() {
       <!-- Totais -->
       <div class="card mb-3">
         <div class="card-body">
-          <div class="section-title">Totais</div>
+          <h2 class="section-title"><i class="bi bi-calculator" aria-hidden="true"></i>Totais</h2>
           <QuoteTotals v-model="quote" />
         </div>
       </div>
@@ -259,7 +264,7 @@ async function onDelete() {
       <!-- Condições -->
       <div class="card mb-3">
         <div class="card-body">
-          <div class="section-title">Condições e observações</div>
+          <h2 class="section-title"><i class="bi bi-chat-left-text" aria-hidden="true"></i>Condições e observações</h2>
           <div class="mb-3">
             <label class="form-label" for="q-terms">Condições de pagamento</label>
             <textarea id="q-terms" v-model="quote.paymentTerms" class="form-control" rows="3" maxlength="1000"></textarea>
@@ -274,7 +279,7 @@ async function onDelete() {
       <!-- Enviar -->
       <div class="card mb-3">
         <div class="card-body">
-          <div class="section-title">Enviar para o cliente</div>
+          <h2 class="section-title"><i class="bi bi-send" aria-hidden="true"></i>Enviar para o cliente</h2>
           <div class="row g-2">
             <div v-if="shareSupported" class="col-12 col-md-4">
               <button type="button" class="btn btn-primary w-100" :disabled="!!busy" @click="onShare">

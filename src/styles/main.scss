@@ -23,8 +23,9 @@ $border-radius: 0.6rem;
 $border-radius-sm: 0.45rem;
 $border-radius-lg: 0.9rem;
 $card-bg: #fff;
-$card-border-width: 0;
-$card-box-shadow: 0 1px 2px rgba(23, 32, 51, 0.06), 0 3px 10px rgba(23, 32, 51, 0.04);
+$card-border-width: 1px;
+$card-border-color: #e3e8f1;
+$card-box-shadow: 0 1px 2px rgba(23, 32, 51, 0.05), 0 8px 20px -10px rgba(23, 32, 51, 0.18);
 $input-bg: #fff;
 $input-border-color: #d3d9e5;
 $input-focus-border-color: $safira;
@@ -77,13 +78,33 @@ body {
   margin: 0;
 }
 
+// Cabeçalho de seção: faixa com ícone, separada do conteúdo do cartão
 .section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: calc(-1 * var(--bs-card-spacer-y)) calc(-1 * var(--bs-card-spacer-x)) 1.1rem;
+  padding: 0.75rem var(--bs-card-spacer-x);
+  background: linear-gradient(180deg, rgba($safira, 0.07), rgba($safira, 0.025));
+  border-bottom: 1px solid var(--bs-card-border-color);
+  border-radius: var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0 0;
   font-family: $font-display;
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: $tinta;
-  margin-bottom: 0.85rem;
+
+  > .bi {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.55rem;
+    background: $safira;
+    color: #fff;
+    font-size: 0.95rem;
+  }
 }
 
 // Valores em dinheiro: mesma voz dos títulos
@@ -279,11 +300,64 @@ $status-colors: (
     }
 
     &.active {
-      background: $tinta;
-      border-color: $tinta;
+      background: var(--status-color, #{$tinta});
+      border-color: var(--status-color, #{$tinta});
       color: #fff;
     }
   }
+}
+
+// Status no editor: um botão por status, o escolhido preenchido com a cor dele
+.status-picker {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+
+  @include media-breakpoint-up(md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.status-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 46px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  background: #fff;
+  color: $tinta;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+  .bi {
+    color: var(--status-color);
+  }
+
+  &:hover {
+    border-color: var(--status-color);
+  }
+}
+
+.btn-check:checked + .status-option {
+  background: var(--status-color);
+  border-color: var(--status-color);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 12px -4px var(--status-color);
+
+  .bi {
+    color: #fff;
+  }
+}
+
+.btn-check:focus-visible + .status-option {
+  outline: 2px solid $safira;
+  outline-offset: 2px;
 }
 
 // ---------- Editor de orçamento ----------

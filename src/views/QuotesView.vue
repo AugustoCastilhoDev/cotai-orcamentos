@@ -157,7 +157,7 @@ function clearFilters() {
                   :key="key"
                   type="button"
                   class="btn btn-sm"
-                  :class="{ active: status === key }" :aria-pressed="status === key"
+                  :class="[`status-${key}`, { active: status === key }]" :aria-pressed="status === key"
                   @click="status = key"
                 >
                   {{ s.label }} <span class="opacity-75">{{ counts[key] || 0 }}</span>
